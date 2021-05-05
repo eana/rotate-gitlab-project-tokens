@@ -6,7 +6,9 @@
 * [Why do even need these tokens in the first place?](#why-do-even-need-these-tokens-in-the-first-place)
 * [How do we rotate the tokens?](#how-do-we-rotate-the-tokens)
 * [The script](#the-script)
-* [How do I run this script?](#how-do-i-run-this-script)
+	* [Install the Dependencies](#install-the-dependencies)
+	* [Configuration](#configuration)
+	* [How do I run this script?](#how-do-i-run-this-script)
 
 <!-- vim-markdown-toc -->
 
@@ -43,6 +45,36 @@ with the new generated token.
 
 ## The script
 
+### Install the Dependencies
+
+This script is written in Python and it's dependencies can be installed using
+[pipenv](https://pipenv.readthedocs.io/en/latest/). Follow the instructions in
+[pipenv docs](https://pipenv.readthedocs.io/en/latest/#install-pipenv-today) to
+install it.
+
+Once you have pipenv installed you can install all the required python libs by
+running:
+
+```bash
+pipenv install
+```
+
+If you have already installed the libs and want to ensure you are running the
+correct versions just run:
+
+```bash
+pipenv sync
+```
+
+Once you have installed everything you will need to activate the Virtual
+Environment that Pipenv created for you before running the script:
+
+```bash
+pipenv shell
+```
+
+### Configuration
+
 The script does **not** rotate the project access tokens for all the projects
 hosted by the Gitlab instance, only the projects provided in the `projects.txt`
 file. When adding the projects to `projects.txt`, the project namespace with
@@ -57,7 +89,7 @@ acme/repo2
 All the tokens created by the script expire in a month and will be
 exposed to the jobs via the `GITLAB_TOKEN` CI/CD enviroment variable.
 
-## How do I run this script?
+### How do I run this script?
 
 Well, normally you don't. This script is supposed to be executed on a schedule
 by Gitlab. If you still need to manually execute, you will need a to create a
@@ -66,7 +98,11 @@ all child processes created from that shell.
 
 ```bash
 export GITLAB_TOKEN="..."
-./rotate-token.sh
+# Run via pipenv
+pipenv run ./rotate-token.py
+# or activate the virtual environment and run the script directly
+pipenv shell
+./rotate-token.py
 ```
 
 > :warning: :warning: :warning: Do **NOT** forget to revoke the token when
