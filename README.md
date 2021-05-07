@@ -6,9 +6,9 @@
 * [Why do even need these tokens in the first place?](#why-do-even-need-these-tokens-in-the-first-place)
 * [How do we rotate the tokens?](#how-do-we-rotate-the-tokens)
 * [The script](#the-script)
-	* [Install the Dependencies](#install-the-dependencies)
-	* [Configuration](#configuration)
-	* [How do I run this script?](#how-do-i-run-this-script)
+    * [Install the Dependencies](#install-the-dependencies)
+    * [Configuration](#configuration)
+    * [How do I run this script?](#how-do-i-run-this-script)
 
 <!-- vim-markdown-toc -->
 
